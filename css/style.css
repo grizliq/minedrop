@@ -1,0 +1,427 @@
+/* ============================================================
+   MineDrop — Тест1
+   Порядок: tokens.css → buttons.css → palette-dark.css → style.css
+   ============================================================ */
+
+/* ==========  PAGE SHELL + BG  ========== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--md-font-body);
+  background: var(--md-bg-page);
+  color: var(--md-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Размытый фон-фото шахты */
+.page-bg {
+  position: fixed;
+  inset: -40px;
+  z-index: -2;
+  background-color: var(--md-page-bg);
+  background-image: url("../assets/bg/bg.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(14px) brightness(0.55) saturate(1.1);
+  transform: scale(1.06);
+}
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(232, 161, 19, 0.10) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(10, 8, 6, 0.35) 0%, rgba(10, 8, 6, 0.55) 100%);
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  color: var(--md-text);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+/* ==========  ШАПКА 04-nav-underline  ========== */
+.md-header-under { padding: 16px 0 0; }
+
+.md-header-under__inner {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.md-header-under__logo img {
+  display: block;
+  width: min(280px, 54vw);
+  height: auto;
+  filter: drop-shadow(0 6px 12px var(--md-shadow));
+}
+
+.md-header-under__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  width: 100%;
+  padding: 10px 0 12px;
+  border-bottom: 3px solid var(--md-gold);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.md-header-under__nav a {
+  font-family: var(--md-font-pixel);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--md-text);
+  text-shadow: 0 2px 0 var(--md-shadow);
+  text-decoration: none;
+  padding: 4px 2px;
+}
+
+.md-header-under__nav a:hover { color: var(--md-gold); }
+
+/* ==========  ГЛАВНАЯ 04-poster-chests  ========== */
+.md-hero-poster { padding: 24px 0 28px; }
+
+.md-hero-poster__inner {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.md-hero-poster__stage {
+  position: relative;
+  width: min(560px, 92vw);
+  display: grid;
+  place-items: center;
+}
+
+.md-hero-poster__frame {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  border: 5px solid rgba(0, 0, 0, 0.8);
+  box-shadow: 0 14px 32px var(--md-shadow);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.md-hero-poster__frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.md-hero-poster__chest {
+  position: absolute;
+  width: 108px;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.4));
+  image-rendering: pixelated;
+}
+
+.md-hero-poster__chest--l { left: -48px; bottom: -10px; transform: rotate(-12deg); }
+.md-hero-poster__chest--r { right: -44px; top: -14px; width: 122px; transform: rotate(10deg); }
+
+.md-mc--hero { font-size: clamp(40px, 7vw, 68px); line-height: 1; }
+
+.md-hero-poster__sub {
+  margin: 0;
+  font-family: var(--md-font-pixel);
+  letter-spacing: 0.04em;
+  font-size: 15px;
+  color: var(--md-text-soft);
+  text-shadow: 0 2px 0 var(--md-shadow);
+}
+
+.md-hero-poster__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .md-hero-poster__chest { display: none; }
+}
+
+/* ==========  VPN 02-notice-grey  ========== */
+.md-vpn-notice { padding: 12px 0 20px; }
+.md-vpn-notice__title { margin: 0 0 14px; }
+
+.md-vpn-notice__panel {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+}
+
+.md-vpn-notice__lead {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--md-text-soft);
+  max-width: 560px;
+}
+
+.md-vpn-notice__cta { min-width: 220px; margin-top: 4px; }
+
+/* ==========  О ИГРЕ 01-panel  ========== */
+.md-about-panel { padding: 6px 0 16px; }
+
+.md-about-panel__kicker {
+  font-family: var(--md-font-pixel);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 20px;
+  margin: 0 0 10px;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.55);
+  color: var(--md-gold);
+}
+
+.md-about-panel__lead {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--md-text-soft);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ==========  БОНУСЫ 01-panel-list  ========== */
+.md-bonus-list { padding: 6px 0 16px; }
+
+.md-bonus-list__ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.md-bonus-list__ul li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--md-text-soft);
+}
+
+.md-bonus-list__ul li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--md-bullet);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* ==========  КАК ИГРАТЬ 03-horizontal  ========== */
+.md-how-h { padding: 10px 0 18px; }
+
+.md-how-h__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.md-how-h__step {
+  background: var(--md-panel);
+  border: 3px solid var(--md-panel-border);
+  box-shadow: inset 0 0 0 2px var(--md-panel-inset);
+  padding: 14px 12px;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}
+
+.md-how-h__step span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  font-family: var(--md-font-pixel);
+  background: var(--md-btn);
+  color: #1a0f0a;
+  border: 2px solid var(--md-stroke);
+  box-shadow: 0 3px 0 var(--md-shadow);
+}
+
+.md-how-h__step p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--md-text-soft);
+}
+
+@media (max-width: 720px) {
+  .md-how-h__row { grid-template-columns: 1fr; }
+}
+
+/* ==========  FAQ 03-open-list  ========== */
+.md-faq-open { padding: 10px 0 22px; }
+
+.md-faq-open__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  counter-reset: faq;
+}
+
+.md-faq-open__list li {
+  counter-increment: faq;
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px 12px 52px;
+  position: relative;
+  background: var(--md-panel);
+  border: 3px solid var(--md-panel-border);
+  box-shadow: inset 0 0 0 2px var(--md-panel-inset);
+}
+
+.md-faq-open__list li::before {
+  content: counter(faq);
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-family: var(--md-font-pixel);
+  font-size: 13px;
+  background: var(--md-btn);
+  color: #1a0f0a;
+  border: 2px solid var(--md-stroke);
+  box-shadow: 0 2px 0 var(--md-shadow);
+}
+
+.md-faq-open__list strong {
+  font-family: var(--md-font-pixel);
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--md-gold);
+  text-shadow: 0 2px 0 var(--md-shadow);
+}
+
+.md-faq-open__list span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--md-text-soft);
+}
+
+/* ==========  ПОДВАЛ 03-split-links  ========== */
+.md-footer-split { padding: 18px 0 26px; }
+
+.md-footer-split__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.md-footer-split__copy {
+  margin: 0;
+  font-family: var(--md-font-pixel);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--md-text-soft);
+  text-shadow: 0 2px 0 var(--md-shadow);
+}
+
+.md-footer-split__nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.md-footer-split__nav a {
+  font-family: var(--md-font-pixel);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--md-gold);
+  text-decoration: none;
+}
+
+.md-footer-split__nav a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .md-footer-split__inner { justify-content: center; text-align: center; }
+}
+
+/* ==========  МОДАЛКА 01-notify-crimson  ========== */
+.md-notify {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.md-notify[hidden] { display: none !important; }
+
+.md-notify__overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.62);
+  cursor: pointer;
+}
+
+.md-notify__card {
+  position: relative;
+  z-index: 1;
+  width: min(540px, calc(100vw - 32px));
+  border: 8px solid #e8a113;
+  background: radial-gradient(circle at 50% 35%, #5d1414 0%, #4b0f10 62%, #3d0c0d 100%);
+  padding: 18px 20px 22px;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.md-notify__gem {
+  display: block;
+  width: 130px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.md-notify__title {
+  font-size: clamp(1.35rem, 4.2vw, 2.05rem);
+  line-height: 1.35;
+  margin: 8px 0 4px;
+}
+
+.md-notify__lead {
+  margin: 0 0 4px;
+  max-width: 380px;
+  font-family: var(--md-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffe14a;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.md-notify__cta { min-width: 220px; padding-left: 20px; padding-right: 20px; }
