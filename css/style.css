@@ -425,3 +425,17 @@ a { color: inherit; }
 }
 
 .md-notify__cta { min-width: 220px; padding-left: 20px; padding-right: 20px; }
+
+/* нижняя кнопка «Играть» (bait.js) */
+.md-stick { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(20, 12, 6, 0.94); border-top: 3px solid #e8a113; box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45); }
+.md-stick[hidden] { display: none !important; }
+.md-stick__txt { color: #ffe9b0; font-weight: 700; font-size: 14px; line-height: 1.25; }
+.md-stick__btn { flex: none; min-height: 0; padding: 10px 18px; }
+@media (min-width: 900px) { .md-stick { left: auto; right: 20px; bottom: 20px; border: 3px solid #e8a113; } }
+body { padding-bottom: 72px; }
+
+/* текстовые блоки (демо, промокоды, советы) */
+.md-text p { margin: 0 0 12px; line-height: 1.6; }
+.md-text p:last-child { margin-bottom: 0; }
+.md-text ul { margin: 0 0 12px; padding-left: 20px; line-height: 1.6; }
+.md-text .md-btn { margin-top: 8px; }
